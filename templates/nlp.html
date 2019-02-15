@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Polarity and Subjectivity Estimation</title>
+
+</head>
+<body>
+	{% extends 'bootstrap/base.html' %}
+	{% block content %}
+	<div class="container">
+	<div class="jumbotron text-center">
+		<h1>Polarity and Subjectivity Estimation</h1>
+	</div>
+	
+	</div>
+
+	<div>
+		<form action="{{url_for('nlp_analyse')}}" method="POST" id="myForm">
+			<textarea name="rawtext" rows="3" cols="3" class="form-control">	
+			</textarea>
+			<input type="submit" name="" value="Submit" class="btn btn-primary">
+			<input type="reset" name="" value="Clear" class="btn btn-outline-primary">
+
+			<a href="{{url_for('nlp')}}" type="button" class="btn btn-danger">Reset</a>
+		</form>
+	</div>
+
+	<div class="container">
+		
+		<div class="card">
+			<div>
+				<p>{{ received_text }}</p>
+			</div>
+			<hr/>
+			<div class="card-body">
+				{% for i in summary %}
+				<li>{{i}}
+					<a href="https://www.dictionary.com/browse/{{i}}?s=t" target="blank_" type="button" class="btn btn-primary">View</a>
+				</li>
+				{% endfor %}
+			</div>
+
+			<table class="table table-striped table-dark">
+				<thead>
+					<tr>
+						<th scope="col">Sentiment</th>
+						<th scope="col">Polarity</th>
+						<th scope="col">Subjectivity</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th scope="row">Score:</th>
+					<td>{{blob_sentiment}}</td>
+					<td>{{blob_subjectivity}}</td>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	{% endblock %}
+
+</body>
+</html>
+

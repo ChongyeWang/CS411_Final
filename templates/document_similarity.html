@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Document Similarity</title>
+</head>
+<body>
+
+	{% extends 'bootstrap/base.html' %}
+	{% block content %}
+	<div class="container">
+	<div class="jumbotron text-center">
+		<h1>Document Similarity</h1>
+	</div>
+	
+	</div>
+
+	<div>
+		<form action="{{url_for('document_similarity_analyse')}}" method="POST" id="ds">
+			<textarea name="text1" rows="3" cols="3" class="form-control">	
+			</textarea>
+
+			<textarea name="text2" rows="3" cols="3" class="form-control">	
+			</textarea>
+
+			<input type="submit" name="" value="Submit" class="btn btn-primary">
+			<input type="reset" name="" value="Clear" class="btn btn-outline-primary">
+
+			<a href="{{url_for('document_similarity')}}" type="button" class="btn btn-danger">Reset</a>
+		</form>
+
+	</div>
+
+	<h1>Document Similarity : {{similarity}}</h1>
+	{% endblock %}
+</body>
+</html>
